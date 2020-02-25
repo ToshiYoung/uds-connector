@@ -1,9 +1,9 @@
 <phpunit
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.0/phpunit.xsd"
         bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="Test Suite">
+        <testsuite name="Test Connector">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
