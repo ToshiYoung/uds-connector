@@ -25,7 +25,7 @@ class Connector {
      */
     public function __construct($apiId, $apiKey)
     {
-        $this->token = base64_encode("$apiId:$$apiKey");
+        $this->token = base64_encode("$apiId:$apiKey");
     }
 
     /**

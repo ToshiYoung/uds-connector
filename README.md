@@ -8,20 +8,28 @@
 A (wrapper)library to communicate with UDS Partner Api 2.
 
 ## Documentation
-Генерация Токена
+Инициализация подключения
+
 ```
-$token = UDSConnector::generateToken(COMPANY_ID, COMPANY_API_KEY);
+use Remake\UDSConnector\Connector;
+
+$UDSClient = new Connector($company_id, $api_key);
+$result = $UDSClient->api(ИМЯ_МЕТОДА);
 ```
 
-По умолчанию ответ приходит в виде Object. Но можно использователь методы asArray() и asJson()
+Для вывода результата используется
 ```
-$settings = UDSConnector::client($token)->api('operations')->asArray();
-$settings = UDSConnector::client($token)->api('operations')->asJson();
+//В виде Объекта
+$settings = $result->asObject();
+
+//В виде Ассоциативного массива
+$settings = $result->asArray();
 ```
 
 Получение настроек компании
 ```
 $settings = UDSConnector::client($token)->api('settings');
+var_dump($settings->assArray());
 ```
 
 Список операций
@@ -31,7 +39,7 @@ $settings = UDSConnector::client($token)->api('operations');
 
 Проведение операции
 ```
-$settings = UDSConnector::client($token)->api('operations')->send([
+$settings = UDSConnector::client($token)->api('operations')->post([
     'code' => 'string',
     'participant' => [
         'uid' => 'string',

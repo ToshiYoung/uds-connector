@@ -34,12 +34,31 @@ class BaseMethod implements Base {
         ]);
 
         try {
-            $this->response = $client->request('GET', $this->methodPath);
+            $response = $client->request('GET', $this->methodPath);
+            if($response->getBody()) {
+                $this->response = json_decode($response->getBody()->getContents());
+            }
+
         } catch (RequestException $e) {
-            $this->response = [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage()
-            ];
+            if($e->getCode() === 401) {
+                $this->response = [
+                    'code' => $e->getCode(),
+                    'message' => 'Проверьте правильность COMPANY_ID и API_KEY'
+                ];
+            } else {
+                $this->response = [
+                    'code' => $e->getCode(),
+                    'message' => $e->getMessage()
+                ];
+            }
         }
+    }
+
+    public function asObject() {
+        return (object) $this->response;
+    }
+
+    public function asArray() {
+        return (array) $this->response;
     }
 }
