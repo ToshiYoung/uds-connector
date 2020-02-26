@@ -8,12 +8,18 @@
 
 require_once 'vendor/autoload.php';
 
+use Remake\UDSConnector\Methods\Settings;
 use Remake\UDSConnector\Connector;
 
 $apiId = '';
 $apiKey = '';
 
-$client = new Connector($apiId, $apiKey);
+$settings = (new Connector($apiId, $apiKey))
+    ->api(new Settings)
+    ->get()
+    ->asArray();
 
-print_r($client->api('settings'));
-
+$operation = (new Connector($apiId, $apiKey))
+    ->api(new Settings)
+    ->get(['max' => 10, 'offset' => 9])
+    ->asArray();

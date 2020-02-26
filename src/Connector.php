@@ -12,38 +12,21 @@ namespace Remake\UDSConnector;
  */
 class Connector {
 
-    /**
-     * Access Token
-     * @var string
-     */
+    private $method;
     private $token;
 
-    /**
-     * Connector constructor.
-     * @param $apiId
-     * @param $apiKey
-     */
+    protected $response;
+
     public function __construct($apiId, $apiKey)
     {
         $this->token = base64_encode("$apiId:$apiKey");
     }
 
-    /**
-     * Загрузка метода API
-     * @example $client->api('settings')
-     * @param $method
-     * @return object
-     */
-    public function api($method): object
+    public function api($method)
     {
-        $class = "Remake\UDSConnector\Methods\\".ucfirst($method);
+        $this->method = $method;
+        $this->method->setToken($this->token);
 
-        if(!class_exists($class)) {
-            return (object) [
-                'error' => "Метод $method не описан",
-            ];
-        }
-
-        return new $class($this->token);
+        return $this->method;
     }
 }
