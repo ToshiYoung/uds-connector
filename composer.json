@@ -1,0 +1,34 @@
+{
+    "name": "remake/uds-connector",
+    "description": "Wrapper Library to communicate with UDS Partner Api 2",
+    "keywords": [
+        "uds api",
+        "uds"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikita Burakov",
+            "email": "n.burakov@remake.agency",
+            "homepage": "http://remake.agency"
+        }
+    ],
+    "require": {
+        "php": ">= 7.3",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "6.5.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Remake\\UDSConnector\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "test:ci": "composer test -- --verbose --coverage-text --coverage-clover=coverage.xml"
+    }
+}
