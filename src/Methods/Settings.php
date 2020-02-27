@@ -7,10 +7,9 @@
  */
 namespace Remake\UDSConnector\Methods;
 
-use Remake\UDSConnector\Client;
+use Remake\UDSConnector\ApiClient;
 
-Class Settings extends Client
+Class Settings extends ApiClient
 {
     protected $methodPath = 'settings';
-
 }
