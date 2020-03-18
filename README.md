@@ -4,7 +4,7 @@
 
 ## About
 
-A (wrapper)library to communicate with UDS Partner Api 2.
+A (wrapper) library to communicate with UDS Partner Api 2.
 
 ## Documentation
 Инициализация подключения
