@@ -40,6 +40,9 @@ class ApiRequestTest extends TestCase
         $this->assertJson($settings->asJson());
     }
 
+    /**
+     * Тест получения настроек компании https://api.uds.app/partner/v2/operations?max=4&offset=0
+     */
     public function testGetOperationsWithParams(): void
     {
         $rowCount = 4;
@@ -52,6 +55,9 @@ class ApiRequestTest extends TestCase
         $this->assertCount($rowCount, $operationsArray['rows']);
     }
 
+    /**
+     * Тест получения настроек компании https://api.uds.app/partner/v2/operations
+     */
     public function testCreateOperation() {
         $total = 100.0;
         $data = [
@@ -66,6 +72,7 @@ class ApiRequestTest extends TestCase
         ];
 
         $operation = $this->client->api(new UDSOperations)->post($data);
+
         $operationId = $operation->asObject()->id;
 
         $this->assertIsObject($operation->asObject());
@@ -80,6 +87,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
+     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/<id>
      * @depends testCreateOperation
      */
 
@@ -94,6 +102,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
+     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/<id>/refund
      * @depends testCreateOperation
      */
 
@@ -108,6 +117,9 @@ class ApiRequestTest extends TestCase
         $this->assertEquals($refundSum * -1, $operation->asObject()->total);
     }
 
+    /**
+     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/calc
+     */
     public function testTransactionCalc() {
         $data = [
             'participant' => [
@@ -126,6 +138,9 @@ class ApiRequestTest extends TestCase
         $this->assertArrayHasKey('id', $operation->asArray());
     }
 
+    /**
+     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/reward
+     */
     public function testReward() {
         $data = [
             'comment' => 'Подарок ТЕСТ',
@@ -135,10 +150,9 @@ class ApiRequestTest extends TestCase
             ]
         ];
 
-        $operation = $this->client->api(new UDSOperations)->reward($data);
-        /**
-         * @todo Проверить
-         */
-        $this->assertArrayHasKey('accepted', $operation->asArray());
+        $operation = $this->client->api(new UDSOperations)->reward($data)->asArray();
+
+        $this->assertArrayHasKey('accepted', $operation);
+        $this->assertEquals(1, $operation['accepted']);
     }
 }

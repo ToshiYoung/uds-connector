@@ -10,8 +10,8 @@ namespace Remake\UDSConnector;
  * Class Connector
  * @package Remake\UDSConnector
  */
-class Connector {
-
+class Connector
+{
     private $method;
     private $token;
 

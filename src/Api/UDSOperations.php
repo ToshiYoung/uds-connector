@@ -1,14 +1,13 @@
 <?php
 /**
- * *
- *  * @author Nikita Burakov <i@toshiyoung.com>
- *  * Copyright (c) 2020.
- *
+ * @author Nikita Burakov <i@toshiyoung.com>
+ * Copyright (c) 2020
  */
 
 namespace Remake\UDSConnector\Api;
 
-Class UDSOperations extends UDSClient {
+class UDSOperations extends UDSClient
+{
     protected $methodPath = 'operations';
 
     public function refund($partial = null) {
