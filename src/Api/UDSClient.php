@@ -1,9 +1,7 @@
 <?php
 /**
- * *
- *  * @author Nikita Burakov <i@toshiyoung.com>
- *  * Copyright (c) 2020.
- *
+ * @author Nikita Burakov <i@toshiyoung.com>
+ * Copyright (c) 2020
  */
 
 namespace Remake\UDSConnector\Api;
@@ -14,7 +12,7 @@ use GuzzleHttp\Exception\RequestException;
 
 interface ApiClientInterface
 {
-    public function addPath($id);
+    public function addPath($path);
     public function setToken($token);
 
     public function get($params);
@@ -26,7 +24,7 @@ interface ApiClientInterface
     public function asJson();
 }
 
-abstract class UDSClient implements ApiClientInterface
+class UDSClient implements ApiClientInterface
 {
     public const UDS_ENDPOINT = 'https://api.uds.app/partner/v2/';
 
@@ -36,8 +34,7 @@ abstract class UDSClient implements ApiClientInterface
     public $addPath;
     public $token;
 
-    public function setToken($token)
-    {
+    public function setToken($token) {
         $this->token = $token;
         return $this;
     }
@@ -90,14 +87,12 @@ abstract class UDSClient implements ApiClientInterface
         return $this;
     }
 
-    public function post($params = [])
-    {
+    public function post($params = []) {
         $this->_request('POST', ['body' => json_encode($params)]);
         return $this;
     }
 
-    public function put($params = [])
-    {
+    public function put($params = []) {
         $this->response = ['method' => 'put', 'path' => $this->methodPath, 'token' => $this->token];
         return $this;
     }
