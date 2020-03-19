@@ -1,6 +1,4 @@
-**!!! NOT FOR USE In Progress**
-
-# UDS Connector Class (In Progress)
+# UDS Connector Class
 
 ## About
 
