@@ -33,7 +33,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/settings
+     * https://api.uds.app/partner/v2/settings
      */
     public function testGetSettings() {
         $settings = $this->client->api(new UDSSettings)->get();
@@ -44,7 +44,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/operations?max=4&offset=0
+     * https://api.uds.app/partner/v2/operations?max=4&offset=0
      */
     public function testGetOperationsWithParams() {
         $rowCount = 4;
@@ -59,7 +59,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/operations
+     * https://api.uds.app/partner/v2/operations
      */
     public function testCreateOperation() {
         $total = 100.0;
@@ -89,7 +89,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/<id>
+     * https://api.uds.app/partner/v2/operations/<id>
      * @depends testCreateOperation
      */
     public function testGetOperationById(int $operationID) {
@@ -101,7 +101,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/<id>/refund
+     * https://api.uds.app/partner/v2/operations/<id>/refund
      * @depends testCreateOperation
      */
 
@@ -117,7 +117,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/calc
+     * https://api.uds.app/partner/v2/operations/calc
      */
     public function testTransactionCalc() {
         $data = [
@@ -138,7 +138,7 @@ class ApiRequestTest extends TestCase
     }
 
     /**
-     * Тест получения настроек компании https://api.uds.app/partner/v2/operations/reward
+     * https://api.uds.app/partner/v2/operations/reward
      */
     public function testReward() {
         $data = [
