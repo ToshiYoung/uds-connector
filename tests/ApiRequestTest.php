@@ -31,8 +31,7 @@ class ApiRequestTest extends TestCase
     /**
      * Тест получения настроек компании https://api.uds.app/partner/v2/settings
      */
-    public function testGetSettings(): void
-    {
+    public function testGetSettings() {
         $settings = $this->client->api(new UDSSettings)->get();
 
         $this->assertIsObject($settings->asObject());
@@ -43,9 +42,9 @@ class ApiRequestTest extends TestCase
     /**
      * Тест получения настроек компании https://api.uds.app/partner/v2/operations?max=4&offset=0
      */
-    public function testGetOperationsWithParams(): void
-    {
+    public function testGetOperationsWithParams() {
         $rowCount = 4;
+        
         $operation = $this->client->api(new UDSOperations)->get(['max' => $rowCount, 'offset' => 0]);
         $operationsArray = $operation->asArray();
 
@@ -72,7 +71,6 @@ class ApiRequestTest extends TestCase
         ];
 
         $operation = $this->client->api(new UDSOperations)->post($data);
-
         $operationId = $operation->asObject()->id;
 
         $this->assertIsObject($operation->asObject());
@@ -90,14 +88,11 @@ class ApiRequestTest extends TestCase
      * Тест получения настроек компании https://api.uds.app/partner/v2/operations/<id>
      * @depends testCreateOperation
      */
-
     public function testGetOperationById(int $operationID) {
-
         $operation = $this->client->api(new UDSOperations)->addPath($operationID)->get();
 
         $this->assertIsArray($operation->asArray());
         $this->assertArrayHasKey('id', $operation->asArray());
-
         $this->assertEquals($operationID, $operation->asObject()->id);
     }
 
@@ -110,9 +105,9 @@ class ApiRequestTest extends TestCase
         $refundSum = 30;
 
         $operation = $this->client->api(new UDSOperations)->addPath($operationID)->refund($refundSum);
+        
         $this->assertIsArray($operation->asArray());
         $this->assertArrayHasKey('id', $operation->asArray());
-
         $this->assertEquals($operationID, $operation->asObject()->origin->id);
         $this->assertEquals($refundSum * -1, $operation->asObject()->total);
     }
