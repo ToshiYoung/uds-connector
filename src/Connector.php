@@ -17,13 +17,11 @@ class Connector
 
     protected $response;
 
-    public function __construct($apiId, $apiKey)
-    {
+    public function __construct($apiId, $apiKey) {
         $this->token = base64_encode("$apiId:$apiKey");
     }
 
-    public function api($method)
-    {
+    public function api($method) {
         $this->method = $method;
         $this->method->setToken($this->token);
 
