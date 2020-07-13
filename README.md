@@ -2,7 +2,7 @@
 
 ## About
 
-A (wrapper) library to communicate with UDS Partner Api 2.
+Библиотека для работы с UDS API v2.
 
 ## Documentation
 Инициализация подключения
