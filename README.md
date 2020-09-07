@@ -11,7 +11,7 @@
 use Remake\UDSConnector\Connector;
 
 $UDSClient = new Connector($company_id, $api_key);
-$result = $UDSClient->api(ИМЯ_МЕТОДА)->get();
+$result = $UDSClient->api(Класс метода)->get();
 ```
 
 Для вывода результата используется
